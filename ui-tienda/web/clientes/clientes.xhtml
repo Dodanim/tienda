@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+    <body>
+        <ui:composition template="./../index.xhtml">
+
+            <ui:define name="content">
+
+
+                <h:form id="miFormulario">  
+                    <div class="table">
+                        <p:panel header="Registro de Clientes" toggleable="true"  toggleSpeed="500"
+                                 closeSpeed="500" widgetVar="panel" id="panel">
+                            <p:panelGrid columns="4" layout="grid" styleClass="ui-panelgrid-blank"  
+                                         columnClasses="ui-grid-col-1, ui-grid-col-5, ui-grid-col-1, ui-grid-col-5"  >
+                                <p:outputLabel for="@next" value="Nombre"/>
+                                <p:inputText value="#{clienteController.cliente.nombreCliente}"></p:inputText>
+
+                                <p:outputLabel for="@next" value="Apellido"/>
+                                <p:inputText value="#{clienteController.cliente.apellidoCliente}"></p:inputText>
+
+
+                            </p:panelGrid>
+                            <p:panelGrid columns="5" layout="grid" styleClass="ui-panelgrid-blank" columnClasses="ui-grid-col-2, ui-grid-col-4,ui-grid-col-1, ui-grid-col-4, ui-grid-col-2"  >
+                                <span></span>
+
+                                <p:commandButton value="Guardar" action="#{clienteController.guardarRegistro()}" process="@this" update="panel msgs"/>
+                                <span></span>
+                                <p:commandButton value="Limpiar"/>
+                            </p:panelGrid>
+                        </p:panel>
+                    </div>
+                    <br/>
+                    <br/>
+                    <p:messages id="msgs" globalOnly="true" closable="true"/>
+                    <p:dataTable id="products1" var="product" value="#{0}" editable="true"
+                                 style="margin-bottom:20px">
+                        <p:column headerText="Numero"></p:column>
+                        <p:column headerText="Nombre Cliente"></p:column>
+                        <p:column headerText="Apellido Cliente"></p:column>
+                    </p:dataTable>
+                </h:form>
+
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>
